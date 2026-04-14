@@ -23,7 +23,52 @@ body {
 
 .nav-link {
     color: #222222 !important;
+    display: flex;
+    width: fit-content;
 }
+
+.search-btn {
+    border: #fe424d solid 1px;
+    color: #fe424d;
+    border-radius: 2rem;
+  }
+
+  .search-btn:hover {
+    background-color: #fe424d ;
+    color: white;
+  }
+
+  .search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-input {
+    border-radius: 2rem;
+    padding: 0.5rem 3rem 0.5rem 2rem;
+  }
+
+  .navbar-collapse {
+    background-color: white !important;
+  }
+
+  .search-div {
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+    width: 75%;
+  }
+
+  .form-search {
+    flex: 1;
+  }
+
+  @media (max-width: 992px) {
+    .search-div {
+      width: 100%;
+    }
+  }
+
 
 /* Footer */
 
@@ -98,6 +143,78 @@ a {
     border: none !important;
 }
 
+/* Index Page */
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (width <= 1000px) {
+    .thous-and {
+        display: none;
+    }
+}
+
+@media (width <= 520px) {
+    .thous-and {
+        display: inline;
+    }
+}
+
+@media (width <= 450px) {
+    .no-mobile {
+        display: none;
+    }
+}
+
+@media (width <= 370px) {
+    .z-flip {
+        display: none;
+    }
+}
+
+.filter {
+    margin-top: 1rem;
+    text-align: center;
+    margin-right: 2rem;
+    opacity: 0.6;
+}
+
+.left {
+    display: flex;
+}
+
+.filter:hover {
+    opacity: 1;
+}
+
+.filter p{
+    font-size: 0.8rem;
+}
+
+#flexSwitchCheckDefault:hover {
+    cursor: pointer;
+}
+
+.tax_toggle {
+    border: 1px solid rgba(0, 0, 0, 0.592);
+    opacity: 0.7;
+    border-radius: 0.5rem;
+    max-height: fit-content;
+    padding: 1rem;
+}
+
+.tax_toggle:hover {
+    opacity: 1;
+}
+
+.tax-info {
+    display: none;
+}
+
 /* Show Image */
 
 .show-img {
@@ -117,5 +234,27 @@ a {
 
 .buttons {
     display: flex;
+}
+
+/* review */
+
+.review-card-div {
+    display: flex;
+    width: 49% !important;
+    margin-top: 10px !important;
+    margin-right: 1% !important;
+}
+
+.review-card {
+    width: 100% !important;
+}
+
+@media (max-width: 570px) {
+    .review-card-div {
+        width: 100% !important;
+        min-height: 200px !important;
+        max-height: fit-content !important;
+        margin-bottom: 10px !important;
+    }
 }
 

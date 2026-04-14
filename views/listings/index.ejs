@@ -4,54 +4,7 @@
         <button>Create New Listing</button>
     </form> -->
 
-    <style>
-        #filters {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .filter {
-            margin-top: 1rem;
-            text-align: center;
-            margin-right: 2rem;
-            opacity: 0.6;
-        }
-
-        .left {
-            display: flex;
-        }
-
-        .filter:hover {
-            opacity: 1;
-        }
-
-        .filter p{
-            font-size: 0.8rem;
-        }
-
-        #flexSwitchCheckDefault:hover {
-            cursor: pointer;
-        }
-
-        .tax_toggle {
-            border: 1px solid rgba(0, 0, 0, 0.592);
-            opacity: 0.7;
-            border-radius: 0.5rem;
-            max-height: fit-content;
-            padding: 1rem;
-        }
-
-        .tax_toggle:hover {
-            opacity: 1;
-        }
-
-        .tax-info {
-            display: none;
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="/css/style.css">
 
     <div id="filters">
         <div class="left">
@@ -67,15 +20,15 @@
                     <div><i class="fa-solid fa-mountain-city"></i></div>
                     <p>Iconic Cities</p>
             </div>
-            <div class="filter">
+            <div class="filter thous-and">
                     <div><i class="fa-solid fa-mountain"></i></div>
                     <p>Mountains</p>
             </div>
-            <div class="filter">
+            <div class="filter thous-and z-flip">
                     <div><i class="fa-brands fa-fort-awesome"></i></div>
                     <p>Castles</p>
             </div>
-            <div class="filter">
+            <div class="filter thous-and no-mobile">
                     <div><i class="fa-solid fa-person-swimming"></i></div>
                     <p>Amazing Pools</p>
             </div>
