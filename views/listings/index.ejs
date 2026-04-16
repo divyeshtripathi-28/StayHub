@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 listings-js">
         <% for(listing of allListings) { %>
             <a href="/listing/<%= listing._id %>" class="listing-link">
                 <div class="card col listing-card">
@@ -74,3 +74,4 @@
         }
     });
 </script>
+<script src="/javascript/search.js"></script>

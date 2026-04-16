@@ -65,3 +65,21 @@ module.exports.deleteListing = async (req, res) => {
     req.flash("success", "Listing Deleted");
     res.redirect("/listings");
 }
+
+module.exports.searchListings = async (req, res) => {
+    let listing = req.query.listing.trim();
+    let allListings;
+    if(!listing || listing.trim() === "") {
+        allListings =  await Listing.find({});
+    }
+    else{
+        allListings = await Listing.find({
+            title: {$regex: listing, $options: "i"}
+        });
+    }
+    if (req.headers.accept?.includes('application/json')) {
+        res.json(allListings); // 👈 live search gets JSON
+    } else {
+        res.render('listings', { allListings }); // 👈 navigation gets full page
+    }
+}
