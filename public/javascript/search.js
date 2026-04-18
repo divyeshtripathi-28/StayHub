@@ -3,7 +3,6 @@ async function search(query) {
 }
 
 async function liveSearch(query) {
-    if (!query) return;
     const res = await fetch(`/listings/search?listing=${encodeURIComponent(query)}`, {
         headers: { 'Accept': 'application/json' } // 👈 tells backend you want JSON
     });
@@ -12,8 +11,14 @@ async function liveSearch(query) {
 }
 
 const inputSearch = (e) => {
+    let input = e.target;
     let query = input.value;
-    console.log("QUERY:", query.trim());
+    const clearBtn = input.closest('.input-grp').querySelector('.clearBtn');
+    if(input.value) {
+        clearBtn.style.display = 'block';
+    } else {
+        clearBtn.style.display = 'none';
+    }
     liveSearch(query.trim());
 }
 
@@ -22,36 +27,76 @@ function liveHTML(data) {
 
     data.forEach(listing => {
         liveHTML += `
-            <a href="/listing/${listing._id}" class="listing-link">
-                <div class="card col listing-card">
-                    <img src="${listing.image.url}" class="card-img-top" style="height: 20rem;">
-                    <div class="card-img-overlay"></div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <b>${listing.title}</b>  <br>
-                            &#8377;${listing.price.toLocaleString("en-IN")} / night
-                            <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
-                        </p>
+            
+            <a href="/listing/${listing._id}" class="listing-link-search">
+                <div class="card-search">
+                    <img src="${listing.image.url}" class="listing-img">
+                    <div class="listing-info">
+                        <div class="listing-title-des">
+                            <b>${listing.title}</b> <br>
+                            <p>${listing.description}</p>
+                        </div>
+                        <span>&#8377;${listing.price}</span>
                     </div>
                 </div>
             </a>
+            <hr>
         `
     });
 
-    document.querySelector(".listings-js").innerHTML = liveHTML;
+    inputs.forEach(input => {
+        let currentResult = input.closest('.input-grp').querySelector('.search-results');
+        currentResult.innerHTML = liveHTML;
+    });
 }
 
-const input = document.querySelector(".search-input");
-const searchBtn = document.querySelector(".search-btn");
-console.log("input:", input);      // Add these
-console.log("searchBtn:", searchBtn); 
+const inputs = document.querySelectorAll(".search-input");
+const searchBtns = document.querySelectorAll(".search-btn");
+const crossSearchs = document.querySelectorAll(".clearBtn");
+const searchResults = document.querySelectorAll('.search-results');
 
-searchBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    let query = input.value;
-    console.log("QUERY:", query.trim());
-    search(query.trim());
+searchBtns.forEach(searchBtn => {
+    searchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        let query = e.target.value;
+        search(query.trim());
+    });
 });
 
 
-input.addEventListener('input', () => setTimeout(inputSearch, 300));
+crossSearchs.forEach(crossSearch => {
+    crossSearch.addEventListener('click', (e) => {
+        e.target.value = '';
+        let query = e.target.value;
+        crossSearch.style.display = 'none';
+        liveSearch(query.trim());
+        inputs.forEach(input => {
+            input.value = '';
+        });
+    });
+});
+
+let noSearch;
+
+inputs.forEach(input => {
+    input.addEventListener('input', (e) => setTimeout(inputSearch(e), 100));
+});
+
+inputs.forEach(input => {
+    input.addEventListener('click', (e) => {
+        e.stopPropagation();
+        noSearch = input.closest('.input-grp').querySelector('.search-results');
+        noSearch.classList.add('active');
+    });
+});
+
+noSearch?.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+const body = document.querySelector('body');
+
+body.addEventListener('click', (e) => {
+    noSearch.classList.remove('active');
+});
+

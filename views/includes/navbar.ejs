@@ -4,17 +4,32 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
 
+    <div class="navbar-nav search-div" id="out-ham">
+      <form class="d-flex form-search" role="search" method="get" action="/listings/search">
+        <div class="input-grp">
+          <input class="form-control me-2 search-input" type="text" placeholder="Search destinations" aria-label="Search"/>
+          <span class="clearBtn">&times;</span>
+          <div class="search-results"></div>
+        </div>
+        <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+      </form>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
       <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
+        <a id="explore" class="nav-link" href="/listings">Explore</a>
       </div>
-      <div class="navbar-nav search-div">
+      <div class="navbar-nav search-div" id="in-ham">
         <form class="d-flex form-search" role="search" method="get" action="/listings/search">
-          <input class="form-control me-2 search-input" type="search" placeholder="Search destinations" aria-label="Search"/>
+          <div class="input-grp">
+            <input class="form-control me-2 search-input" type="text" placeholder="Search destinations" aria-label="Search"/>
+            <span class="clearBtn">&times;</span>
+            <div class="search-results"></div>
+          </div>
           <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
         </form>
       </div>
