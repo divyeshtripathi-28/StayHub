@@ -58,7 +58,8 @@ const searchResults = document.querySelectorAll('.search-results');
 searchBtns.forEach(searchBtn => {
     searchBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        let query = e.target.value;
+        let input = searchBtn.closest('.form-search').querySelector('.search-input');
+        let query = input.value;
         search(query.trim());
     });
 });
