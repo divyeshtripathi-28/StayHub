@@ -1,5 +1,5 @@
 <% layout("/layout/boilerplate.ejs") %>
-<body>
+
     <!-- <form method="get" action="/listing/new">
         <button>Create New Listing</button>
     </form> -->
@@ -44,9 +44,8 @@
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 listings-js">
         <% for(listing of allListings) { %>
             <a href="/listing/<%= listing._id %>" class="listing-link">
-                <div class="card col listing-card">
+                <div class="card col listing-card listing-show-link">
                     <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem;">
-                    <div class="card-img-overlay"></div>
                     <div class="card-body">
                         <p class="card-text">
                             <b><%= listing.title %></b>  <br>
@@ -58,8 +57,7 @@
             </a>
         <% } %>
     </div>
-    
-</body>
+
 
 <script>
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");

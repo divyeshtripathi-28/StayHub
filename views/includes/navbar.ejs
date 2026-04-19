@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/style.css">
 
-<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top mb-3">
+<nav class="navbar navbar-expand-lg bg-body border-bottom sticky-top mb-3 navbar-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
 
@@ -41,6 +41,17 @@
         <% } else {%>
           <a class="nav-link" href="/logout"><b>Logout</b></a>
         <% } %>
+      </div>
+      <div class="navbar-nav theme">
+        <span class="theme-open"><b>Theme</b></span>
+        <div class="theme-options">
+          <div class="light">
+            <input type="radio" name="mode" id="light">Light
+          </div>
+          <div class="dark">
+            <input type="radio" name="mode" id="dark">Dark
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <% layout("/layout/boilerplate.ejs") %>
-<body>
+
     <br>
     <div class="row">
         <div class="col-8 offset-2">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Image</label>
-                    <input name="listing[image][url]" type="file" class="form-control" >
+                    <input name="listing[image][url]" type="file" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
@@ -47,4 +47,4 @@
             </form>
         </div>
     </div>
-</body>
+

@@ -98,6 +98,5 @@ noSearch?.addEventListener('click', (e) => {
 const body = document.querySelector('body');
 
 body.addEventListener('click', (e) => {
-    noSearch.classList.remove('active');
+    noSearch?.classList.remove('active');
 });
-

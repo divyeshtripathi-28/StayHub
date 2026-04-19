@@ -17,6 +17,7 @@ const session = require("express-session");
 const MongoStore = require('connect-mongo').default;
 const flash = require("connect-flash");
 const passport = require("passport");
+const jwt = require("jsonwebtoken");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 
@@ -44,7 +45,6 @@ main().then(() => {
 async function main() {
     await mongoose.connect(dbUrl);
 }
-
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -85,18 +85,11 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
-    next();
-});
-
-app.use((req, res, next) => {
     res.locals.error = req.flash("error");
-    next();
-});
-
-app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
 });
+
 
 // app.get("/demouser", async (req, res) => {
 //     let fakeUser = new User({
